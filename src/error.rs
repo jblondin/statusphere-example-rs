@@ -73,7 +73,7 @@ pub async fn error_middleware(
             let message = axum::body::to_bytes(body, usize::MAX)
                 .await
                 .ok()
-                .and_then(|body| str::from_utf8(&body).ok().map(ToOwned::to_owned))
+                .and_then(|body| String::from_utf8(body.to_vec()).ok())
                 .unwrap_or_else(|| "Unable to display error message, see server logs.".to_owned());
             Some(message)
         } else {
