@@ -1,0 +1,8 @@
+{% extends "layout" %}
+{% block title %}Error{% endblock %}
+{% block body %}
+<p class="error visible">Something went wrong! Click <a href="/">here</a> to go back to the home page.</p>
+{% if error_details %}
+<p class="error visible">{{ error_details }}</p>
+{% endif %}
+{% endblock %}

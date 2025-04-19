@@ -1,0 +1,28 @@
+[package]
+edition = "2024"
+name = "statusphere-example-rs"
+version = "0.1.0"
+
+[dependencies]
+anyhow = {version = "1"}
+atproto-jetstream = {version = "0.1", git = "https://github.com/jblondin/atproto-jetstream"}
+atrium-api = {version = "0.25"}
+atrium-common = {version = "0.1"}
+atrium-identity = {version = "0.1"}
+atrium-oauth = {version = "0.1"}
+axum = {version = "0.8", features = ["tracing", "macros"]}
+chrono = {version = "0.4", features = ["clock", "alloc"]}
+futures = {version = "0.3"}
+hickory-resolver = {version = "0.25"}
+minijinja = {version = "2"}
+oauth2 = {version = "5"}
+rustls = {version = "0.23"}
+serde = {version = "1", features = ["derive"]}
+serde_json = {version = "1"}
+thiserror = {version = "1"}
+tokio = {version = "1", features = ["rt-multi-thread", "macros"]}
+tower-http = {version = "0.6", features = ["fs", "trace"]}
+tower-sessions = "0.14"
+tower-sessions-sqlx-store = {version = "0.15", features = ["sqlite"]}
+tracing = {version = "0.1"}
+tracing-subscriber = {version = "0.3", features = ["env-filter"]}

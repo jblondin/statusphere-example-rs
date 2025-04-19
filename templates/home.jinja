@@ -1,0 +1,46 @@
+{% extends "layout" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="card">
+{% if profile %}
+<form action="/logout" method="post" class="session-form">
+    <div>
+        Hi, <strong>{{ profile.display_name|e }}</strong>. What's
+        your status today?
+    </div>
+    <div>
+        <button type="submit">Log out</button>
+    </div>
+</form>
+{% else %}
+<div class="session-form">
+    <div><a href="/login">Log in</a> to set your status!</div>
+    <div>
+        <a href="/login" class="button">Log in</a>
+    </div>
+</div>
+{% if error == "logged_out" %}
+<div class="error visible">You must be logged in to set your status!</div>
+{% endif %}
+{% endif %}
+</div>
+<form action="/status" method="post" class="status-options">
+{% for status_option in status_options %}
+<button class='status-option{% if user_status == status_option %} selected{% endif %}' 
+    name="status" 
+    value="{{ status_option }}"
+>{{ status_option }}</button>
+{% endfor %}
+</form>
+{% for status in statuses %}
+<div class="{{ "status-line no-line" if loop.index0 == 0 else "status-line" }}">
+    <div>
+        <div class="status">{{ status.status }}</div>
+    </div>
+    <div class="desc">
+        <a class="author" href="https://bsky.app/profile/{{ status.handle }}">{{ status.handle }}</a>
+        {{ "is feeling " ~ status.status ~ " today" if status.date == today else "was feeling " ~ status.status ~ " on " ~ status.date }}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

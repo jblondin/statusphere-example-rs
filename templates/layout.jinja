@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/assets/styles.css" />
+    </head>
+    <body>
+        <div id="root">
+            <div id="header">
+            <h1>Statusphere</h1>
+            <p>Set your status on the Atmosphere.</p>
+            </div>
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
